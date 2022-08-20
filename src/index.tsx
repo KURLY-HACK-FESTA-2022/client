@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import './styles/styles.css';
+import './libs/styles/global.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
