@@ -1,7 +1,15 @@
 import React from 'react';
+import logo from './logo.svg';
+import { LoggedInRouter } from './router/logged-in-router';
+import { LoggedOutRouter } from './router/logged-out-router';
 
 function App() {
-  return <div className="App">test</div>;
+  const isLoggedIn = false;
+  return isLoggedIn ? (
+    <LoggedInRouter></LoggedInRouter>
+  ) : (
+    <LoggedOutRouter></LoggedOutRouter>
+  );
 }
 
 export default App;
