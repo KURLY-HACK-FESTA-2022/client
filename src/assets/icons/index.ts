@@ -5,7 +5,7 @@ export { ReactComponent as CheckCircle } from './CheckCircle.svg';
 export { ReactComponent as CheveronDown } from './CheveronDown.svg';
 export { ReactComponent as CheveronRight } from './CheveronRight.svg';
 export { ReactComponent as Exclamation } from './XIcon.svg';
-export { ReactComponent as LeftAroowIcon } from './LeftAroowIcon.svg';
+export { ReactComponent as LeftArrowIcon } from './LeftArrowIcon.svg';
 export { ReactComponent as MenuIcon } from './MenuIcon.svg';
 export { ReactComponent as XIcon } from './XIcon.svg';
 
