@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
-export const NotFound = () => {
+function NotFoundPage() {
   return (
     <div className="h-screen flex flex-col items-center justify-center">
       <Helmet>
@@ -17,4 +17,6 @@ export const NotFound = () => {
       </Link>
     </div>
   );
-};
+}
+
+export default NotFoundPage;

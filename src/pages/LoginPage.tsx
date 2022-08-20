@@ -4,16 +4,17 @@ import { FormError } from '../components/form-error';
 import { Button } from '../components/button';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import kurlyLogo from '../images/kurlyChaser.png';
 import axios from 'axios';
 import { useQuery, useMutation } from 'react-query';
+import { KurlyLogo } from 'assets/images';
+import { BellIcon } from 'assets/icons';
 
 interface ILoginForm {
   email: string;
   password: string;
 }
 
-export const Login = () => {
+function LoginPage() {
   const { register, getValues, formState, handleSubmit } = useForm<ILoginForm>({
     mode: 'onChange',
   });
@@ -40,7 +41,7 @@ export const Login = () => {
         <title>컬리체이서 | 로그인</title>
       </Helmet>
       <div className="w-full max-w-screen-sm flex flex-col px-5 items-center">
-        <img src={kurlyLogo} className="w-52 mb-10" alt="kurlyLogo"></img>
+        <img src={KurlyLogo} className="w-52 mb-10" alt="kurlyLogo"></img>
         <h4 className=" w-full font-medium text-left text-3xl">
           Welcome Kurly's Chaser
         </h4>
@@ -86,7 +87,7 @@ export const Login = () => {
           ></Button>
         </form>
         <div>
-          New to Kurly Chaser?{' '}
+          <span>New to Kurly Chaser? </span>
           <Link
             to={'/create-account'}
             className="text-green-600 hover:underline"
@@ -97,4 +98,6 @@ export const Login = () => {
       </div>
     </div>
   );
-};
+}
+
+export default LoginPage;
