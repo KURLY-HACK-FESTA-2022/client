@@ -1,15 +1,16 @@
+import { isLogin } from 'libs/utils/auth';
 import React from 'react';
-import logo from './logo.svg';
-import { LoggedInRouter } from './router/logged-in-router';
-import { LoggedOutRouter } from './router/logged-out-router';
+import { PrivateRouting, PublicRouting } from 'routes/Routing';
 
 function App() {
-  const isLoggedIn = false;
-  return isLoggedIn ? (
-    <LoggedInRouter></LoggedInRouter>
-  ) : (
-    <LoggedOutRouter></LoggedOutRouter>
+  return (
+    <>
+      <PrivateRouting />
+    </>
   );
+
+  // 로그인 구현시 아래 코드 사용
+  // return <>{isLogin ? <PrivateRouting /> : <PublicRouting />}</>;
 }
 
 export default App;
