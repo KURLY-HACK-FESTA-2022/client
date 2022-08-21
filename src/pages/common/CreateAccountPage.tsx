@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormError } from '../components/form-error';
-import { Button } from '../components/button';
+import { FormError } from '../../components/form-error';
+import { Button } from '../../components/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import kurlyLogo from '../images/kurlyChaser.png';
+import kurlyLogo from '../../assets/images/kurlyChaser.png';
 
 interface ICreateAccountForm {
   email: string;
@@ -13,11 +13,11 @@ interface ICreateAccountForm {
 }
 
 enum UserRole {
-  Client = 'Client',
+  Customer = 'Customer',
   Delivery = 'Delivery',
 }
 
-export const CreateAccount = () => {
+function CreateAccount() {
   const { register, getValues, formState, handleSubmit, watch } =
     useForm<ICreateAccountForm>({
       mode: 'onChange',
@@ -100,4 +100,6 @@ export const CreateAccount = () => {
       </div>
     </div>
   );
-};
+}
+
+export default CreateAccount;
