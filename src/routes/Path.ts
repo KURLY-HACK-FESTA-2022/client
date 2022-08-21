@@ -1,6 +1,6 @@
 const Path = {
   LOGIN: '/login',
-  CREATE_ACCOUNT: '/',
+  CREATE_ACCOUNT: '/create-account',
   NOTFOUND: '/*',
   DELIVERY_MAIN: '/delivery/:id',
   DELIVERY_DETAIL: '/delivery-detail/:id',
