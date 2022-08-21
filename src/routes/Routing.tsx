@@ -4,33 +4,33 @@ import Path from './Path';
 
 const NotFoundPage = React.lazy(() => import('pages/NotFoundPage'));
 const LoginPage = React.lazy(() => import('pages/LoginPage'));
-const TestPage = React.lazy(() => import('pages/TestPage'));
+const DeliveryMainPage = React.lazy(() => import('pages/DeliveryMainPage'));
 
-const publicRoutingComponents = [
+const CustomerRoutingComponents = [
   { path: '*', element: <NotFoundPage /> },
   { path: Path.LOGIN, element: <LoginPage /> },
-  { path: Path.LOGIN, element: <TestPage /> },
+  { path: Path.LOGIN, element: <DeliveryMainPage /> },
 ];
 
-const privateRoutingComponents = [
+const DeliveryRoutingComponents = [
   // logged in
   { path: '*', element: <NotFoundPage /> },
-  { path: Path.TEST, element: <TestPage /> },
+  { path: Path.DELIVERYMAIN, element: <DeliveryMainPage /> },
   // { path: Path.LandingPage, element: <LandingPage /> },
 
   // no logged in
   { path: Path.LOGIN, element: <LoginPage /> }, // 테스트 후 지울 것
 ];
 
-export function PublicRouting() {
+export function CustomerRouting() {
   const publicRoutes = useMemo(() => {
-    return publicRoutingComponents.map((component, index) => {
+    return CustomerRoutingComponents.map((component, index) => {
       const { path, element } = component;
       return (
         <Route key={`${component}_${index}`} path={path} element={element} />
       );
     });
-  }, [publicRoutingComponents]);
+  }, [CustomerRoutingComponents]);
 
   return (
     <Suspense fallback={<>....laoding</>}>
@@ -39,15 +39,15 @@ export function PublicRouting() {
   );
 }
 
-export function PrivateRouting() {
+export function DeliveryRouting() {
   const privateRoutes = useMemo(() => {
-    return privateRoutingComponents.map((component, index) => {
+    return DeliveryRoutingComponents.map((component, index) => {
       const { path, element } = component;
       return (
         <Route key={`${component}_${index}`} path={path} element={element} />
       );
     });
-  }, [privateRoutingComponents]);
+  }, [DeliveryRoutingComponents]);
 
   return (
     <Suspense fallback={<>....loging</>}>

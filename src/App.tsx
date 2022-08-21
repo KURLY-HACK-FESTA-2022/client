@@ -1,11 +1,11 @@
 import { isLogin } from 'libs/utils/auth';
 import React from 'react';
-import { PrivateRouting, PublicRouting } from 'routes/Routing';
+import { DeliveryRouting } from 'routes/Routing';
 
 function App() {
   return (
     <>
-      <PrivateRouting />
+      <DeliveryRouting />
     </>
   );
 
