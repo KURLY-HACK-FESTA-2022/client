@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormError } from '../components/form-error';
-import { Button } from '../components/button';
+import { FormError } from '../../components/form-error';
+import { Button } from '../../components/button';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import axios from 'axios';

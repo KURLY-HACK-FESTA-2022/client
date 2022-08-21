@@ -2,9 +2,9 @@ import React, { Suspense, useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Path from './Path';
 
-const NotFoundPage = React.lazy(() => import('pages/NotFoundPage'));
-const LoginPage = React.lazy(() => import('pages/LoginPage'));
-const TestPage = React.lazy(() => import('pages/TestPage'));
+const NotFoundPage = React.lazy(() => import('pages/common/NotFoundPage'));
+const LoginPage = React.lazy(() => import('pages/common/LoginPage'));
+const TestPage = React.lazy(() => import('pages/common/TestPage'));
 
 const publicRoutingComponents = [
   { path: '*', element: <NotFoundPage /> },
