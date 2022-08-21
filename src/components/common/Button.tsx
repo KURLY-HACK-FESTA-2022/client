@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 interface ButtonStyledProps {
   width?: number;
   height?: number;
-  variant?: 'white' | 'purple';
+  variant?: 'white' | 'purple' | 'longPurple';
 }
 
 export interface ButtonProps
@@ -40,6 +40,12 @@ const StyledButton = styled.button<ButtonStyledProps>`
 
       case 'purple':
         return css`
+          color: white;
+          background: ${palette.mainColor};
+        `;
+      case 'longPurple':
+        return css`
+          width: 272px;
           color: white;
           background: ${palette.mainColor};
         `;
