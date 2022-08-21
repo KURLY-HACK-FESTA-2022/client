@@ -1,4 +1,4 @@
-const palette = {
+export const palette = {
   // Primary
   mainColor: '#532472',
   error: '#EB5757',
