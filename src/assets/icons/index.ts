@@ -14,17 +14,3 @@ export { ReactComponent as XIcon } from './XIcon.svg';
 export { ReactComponent as DifferenceIcon } from './DifferenceIcon.svg';
 export { ReactComponent as WarningIcon } from './WarningIcon.svg';
 export { ReactComponent as BewareIcon } from './BewareIcon.svg';
-
-// no choice balloon icon
-
-export { ReactComponent as GrayBalloonIcon } from './GrayBalloonIcon.svg';
-export { ReactComponent as RedBalloonIcon } from './RedBalloonIcon.svg';
-export { ReactComponent as YellowBalloonIcon } from './YellowBalloonIcon.svg';
-export { ReactComponent as PurpleBalloonIcon } from './PurpleBalloonIcon.svg';
-
-// choice balloon icon
-
-export { ReactComponent as GrayBalloonChoiceIcon } from './GrayBalloonChoiceIcon.svg';
-export { ReactComponent as RedBalloonChoiceIcon } from './RedBalloonChoiceIcon.svg';
-export { ReactComponent as YellowBalloonChoiceIcon } from './YellowBalloonChoiceIcon.svg';
-export { ReactComponent as PurpleBalloonChoiceIcon } from './PurpleBalloonChoiceIcon.svg';
