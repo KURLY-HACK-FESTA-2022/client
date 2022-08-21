@@ -39,8 +39,8 @@ function KakaoMap() {
       }}
       style={{
         // 지도의 크기
-        width: '100%',
-        height: '450px',
+        width: '360px',
+        height: '404px',
       }}
       level={4} // 지도의 확대 레벨
     >
