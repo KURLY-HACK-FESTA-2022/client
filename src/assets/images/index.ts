@@ -1,4 +1,5 @@
 export { default as KurlyLogo } from './kurlyChaser.png';
+export { default as KurlySmallLogo } from './KurlySmallLogo.png';
 
 // no choice balloon Image
 
