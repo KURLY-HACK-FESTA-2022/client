@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormError } from '../components/form-error';
-import { Button } from '../components/button';
+import { FormError } from '../../components/form-error';
+import { Button } from '../../components/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import kurlyLogo from '../images/kurlyChaser.png';
