@@ -4,19 +4,23 @@ import Path from './Path';
 
 const NotFoundPage = React.lazy(() => import('pages/common/NotFoundPage'));
 const LoginPage = React.lazy(() => import('pages/common/LoginPage'));
-const TestPage = React.lazy(() => import('pages/common/TestPage'));
+const DeliveryMainPage = React.lazy(
+  () => import('pages/delivery/DeliveryMainPage'),
+);
+const DeliveryDetailPage = React.lazy(
+  () => import('pages/delivery/DeliveryDetailPage'),
+);
 
 const CustomerRoutingComponents = [
   { path: '*', element: <NotFoundPage /> },
   { path: Path.LOGIN, element: <LoginPage /> },
-  { path: Path.LOGIN, element: <DeliveryMainPage /> },
 ];
 
 const DeliveryRoutingComponents = [
   // logged in
   { path: '*', element: <NotFoundPage /> },
-  { path: Path.DELIVERYMAIN, element: <DeliveryMainPage /> },
-  // { path: Path.LandingPage, element: <LandingPage /> },
+  { path: Path.DELIVERY_MAIN, element: <DeliveryMainPage /> },
+  { path: Path.DELIVERY_DETAIL, element: <DeliveryDetailPage /> },
 
   // no logged in
   { path: Path.LOGIN, element: <LoginPage /> }, // 테스트 후 지울 것
