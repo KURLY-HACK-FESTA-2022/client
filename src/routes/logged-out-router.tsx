@@ -2,7 +2,7 @@ import LoginPage from 'pages/common/LoginPage';
 import NotFoundPage from 'pages/common/NotFoundPage';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { CreateAccount } from '../pages/common/CreateAccountPage';
+import CreateAccount from '../pages/common/CreateAccountPage';
 
 export const LoggedOutRouter = () => {
   return (
