@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
-export const Main = () => {
+export const Home = () => {
   return (
     <div className="h-screen flex flex-col items-center justify-center">
       <Helmet>
