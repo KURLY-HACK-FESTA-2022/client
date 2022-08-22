@@ -1,13 +1,17 @@
 import GlobalStyles from 'libs/styles/globalStyles';
+import theme from 'libs/styles/theme';
 import { isLogin } from 'libs/utils/auth';
 import React from 'react';
 import { DeliveryRouting } from 'routes/Routing';
+import { ThemeProvider } from 'styled-components';
 
 function App() {
   return (
     <>
-      <GlobalStyles />
-      <DeliveryRouting />
+      {/* <GlobalStyles /> */}
+      <ThemeProvider theme={theme}>
+        <DeliveryRouting />
+      </ThemeProvider>
     </>
   );
 
