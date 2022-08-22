@@ -1,12 +1,11 @@
 import React, { memo, ReactNode } from 'react';
-import { palette, PaletteKeyTypes } from 'libs/styles/palette';
 
 import styled, { css } from 'styled-components';
 
 interface ButtonStyledProps {
   width?: number;
   height?: number;
-  variant?: 'white' | 'purple';
+  variant?: 'white' | 'purple' | 'longPurple' | 'longWhite';
 }
 
 export interface ButtonProps
@@ -29,25 +28,38 @@ const StyledButton = styled.button<ButtonStyledProps>`
   align-items: center;
   justify-content: center;
   border-radius: 4px;
+  ${({ theme }) => theme.textStyle.regular[1420]};
 
-  ${({ variant = 'white' }) => {
+  ${({ variant = 'white', theme }) => {
     switch (variant) {
       case 'white':
         return css`
-          color: ${palette.mainColor};
-          border: 1px solid ${palette.mainColor};
+          color: ${theme.palette.mainColor};
+          border: 1px solid ${theme.palette.mainColor};
         `;
 
       case 'purple':
         return css`
           color: white;
-          background: ${palette.mainColor};
+          background: ${theme.palette.mainColor};
+        `;
+      case 'longPurple':
+        return css`
+          width: 272px;
+          color: white;
+          background: ${theme.palette.mainColor};
+        `;
+      case 'longWhite':
+        return css`
+          width: 272px;
+          color: ${theme.palette.mainColor};
+          border: 1px solid ${theme.palette.mainColor};
         `;
     }
   }}
 
   &:disabled {
-    background: ${palette.error};
+    background: ${({ theme }) => theme.palette.error};
     cursor: not-allowed;
   }
 `;

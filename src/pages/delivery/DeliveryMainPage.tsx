@@ -1,3 +1,4 @@
+import DeliveryMainContainer from 'container/DeliveryMainContainer';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
@@ -7,7 +8,7 @@ function DeliveryMainPage() {
       <Helmet>
         <title>컬리체이서 | 배송기사 메인페이지 </title>
       </Helmet>
-      <h1></h1>
+      <DeliveryMainContainer />
     </div>
   );
 }

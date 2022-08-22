@@ -13,6 +13,29 @@ interface ModalTemplateProps extends IModalInnerStyled {
   onToggleModal: () => void;
 }
 
+function ModalTemplate({
+  width,
+  height,
+  children,
+  onToggleModal,
+  ...rest
+}: ModalTemplateProps) {
+  return (
+    <ModalPortal>
+      <ModalTemplateBlock onMouseDown={onToggleModal} {...rest}>
+        <ModalInner
+          width={width}
+          height={height}
+          onMouseDown={(e) => e.stopPropagation()}
+        >
+          {children}
+        </ModalInner>
+        <ModalBackground />
+      </ModalTemplateBlock>
+    </ModalPortal>
+  );
+}
+
 const ModalTemplateBlock = styled.div`
   position: fixed;
   width: 100%;
@@ -47,28 +70,5 @@ const ModalBackground = styled.div`
   top: 0;
   opacity: 0.4;
 `;
-
-function ModalTemplate({
-  width,
-  height,
-  children,
-  onToggleModal,
-  ...rest
-}: ModalTemplateProps) {
-  return (
-    <ModalPortal>
-      <ModalTemplateBlock onMouseDown={onToggleModal} {...rest}>
-        <ModalInner
-          width={width}
-          height={height}
-          onMouseDown={(e) => e.stopPropagation()}
-        >
-          {children}
-        </ModalInner>
-        <ModalBackground />
-      </ModalTemplateBlock>
-    </ModalPortal>
-  );
-}
 
 export default ModalTemplate;
