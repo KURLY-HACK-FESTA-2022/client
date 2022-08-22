@@ -14,3 +14,10 @@ export { ReactComponent as XIcon } from './XIcon.svg';
 export { ReactComponent as HighWarningIcon } from './HighWarningIcon.svg';
 export { ReactComponent as MidWarningIcon } from './MidWarningIcon.svg';
 export { ReactComponent as LowWarningIcon } from './LowWarningIcon.svg';
+
+//
+
+export { ReactComponent as WhiteRectangle } from './WhiteRectangle.svg';
+export { ReactComponent as PurpleRectangle } from './PurpleRectangle.svg';
+export { ReactComponent as YellowRectangle } from './YellowRectangle.svg';
+export { ReactComponent as RedRectangle } from './RedRectangle.svg';
