@@ -1,46 +1,82 @@
-import { faX } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useCurrentLocationCheck from 'hooks/useCurrentLocationCheck';
-import { Helmet } from 'react-helmet-async';
-import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 function DeliveryDetailInfomation() {
-  const { onCurrentLocationCheck } = useCurrentLocationCheck();
-  const navigate = useNavigate();
   return (
-    <div>
-      <Helmet>
-        <title>컬리체이서 | 고객 알림페이지</title>
-      </Helmet>
-      <div className="flex h-20 items-center px-6">
-        <button
-          onClick={() => {
-            navigate(-1);
-          }}
-          className="mr-5"
-        >
-          <FontAwesomeIcon icon={faX} className="text-xl text-gray-600" />
-        </button>
-        <p className="text-2xl pb-1 font-bold">상세 정보</p>
-      </div>
-    </div>
-
-    // <section>
-    //   <h2>상세 정보</h2>
-    //   <ul>
-    //     <li>상세주소</li>
-    //     <li>수령인 이름</li>
-    //     <li>배송 메시지</li>
-    //     <li>공동 현관 비밀번호</li>
-    //     <li>운송장 내역</li>
-    //     <li>포장 방법</li>
-    //     <li>제품 수량</li>
-    //     <li>유의 사항</li>
-    //   </ul>
-    //   <button>대응 배송</button>
-    //   <button onClick={(e) => onCurrentLocationCheck(e)}>배송 완료</button>
-    // </section>
+    <InfomationSection>
+      <TitleContainer>
+        <Title>상세 정보</Title>
+      </TitleContainer>
+      <CategoryList>
+        <Category>
+          상세주소
+          <CategoryContent>서울시 강남구 역삼동</CategoryContent>
+        </Category>
+        <Category>
+          수령인 이름
+          <CategoryContent>이재하</CategoryContent>
+        </Category>
+        <Category>
+          배송 메시지
+          <CategoryContent>안녕하세요. 저희 판매자입니다.</CategoryContent>
+        </Category>
+        <Category>
+          공동 현관 비밀번호
+          <CategoryContent>123456</CategoryContent>
+        </Category>
+        <Category>
+          운송장 내역
+          <CategoryContent>123456789</CategoryContent>
+        </Category>
+        <Category>
+          포장 방법
+          <CategoryContent>개인 보냉백 사용</CategoryContent>
+        </Category>
+        <Category>
+          제품 수량
+          <CategoryContent>1</CategoryContent>
+        </Category>
+        <Category>
+          유의사항
+          <CategoryContent>
+            - 제품의 색상이 불일치할 경우, 제품을 반품하여 주시기 바랍니다.
+          </CategoryContent>
+        </Category>
+      </CategoryList>
+    </InfomationSection>
   );
 }
+
+const InfomationSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 20px;
+  width: 360px;
+  margin-bottom: 16px;
+`;
+
+const Title = styled.h2`
+  ${({ theme }) => theme.textStyle.bold[2028]};
+`;
+
+const CategoryList = styled.ul``;
+
+const Category = styled.li`
+  ${({ theme }) => theme.textStyle.regular[1420]};
+  color: ${({ theme }) => theme.palette.gray500};
+  margin-top: 16px;
+`;
+
+const CategoryContent = styled.div`
+  margin-top: 7px;
+  color: ${({ theme }) => theme.palette.gray800};
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  width: 320px;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export default DeliveryDetailInfomation;
