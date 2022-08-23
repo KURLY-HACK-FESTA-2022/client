@@ -1,3 +1,14 @@
+export interface Delivery {
+  id: number;
+  lat: number;
+  lng: number;
+  address: string;
+  comment: string;
+  entrancePassword: string;
+  orderNumber: string;
+  total: number;
+}
+
 export type deliveryDetail = {
   title: string;
   content: string;
