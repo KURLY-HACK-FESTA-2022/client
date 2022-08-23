@@ -1,4 +1,4 @@
-import MainHeader from 'components/common/MainHeader';
+import MainHeader from 'components/delivery/main/MainHeader';
 import DeliveryMainContainer from 'container/DeliveryMainContainer';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
