@@ -18,7 +18,7 @@ const fontSize = {
   small: '12px',
   medium: '14px',
   large: '16px',
-  xLarge: '20spx',
+  xLarge: '20px',
 } as const;
 
 const fontWeight = {
