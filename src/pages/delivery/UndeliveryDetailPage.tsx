@@ -1,14 +1,32 @@
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import KakaoMap from 'components/delivery/main/KakaoMap';
-import { myDeliveryInfo } from 'model/ delivery';
+import {
+  GrayBalloonImage,
+  PurpleBalloonImage,
+  RedBalloonChoiceImage,
+  YellowBalloonImage,
+} from 'assets/images';
+import Button from 'components/common/Button';
+import { myDeliveryInfo } from 'model/delivery';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 function UndeliveryDetailPage() {
   const navigate = useNavigate();
   const MyDeliveryInfo = myDeliveryInfo;
+
+  const markerImageSrc = [
+    RedBalloonChoiceImage,
+    GrayBalloonImage,
+    YellowBalloonImage,
+    PurpleBalloonImage,
+  ];
+  const imageSize = { width: 18, height: 22 };
+  const spriteSize = { width: 18, height: 22 };
+
   return (
     <div>
       <Helmet>
@@ -51,30 +69,67 @@ function UndeliveryDetailPage() {
           <p className="text-sm text-gray-500 pt-2 pb-2">고객 요청 메세지</p>
           <p className="font-bold pt-2 pb-3">예상 배송 위치</p>
           <div className="h-48">
-            <KakaoMap />
+            <Map
+              center={{
+                // 지도의 중심좌표
+                lat: 37.566,
+                lng: 126.978,
+              }}
+              style={{
+                // 지도의 크기
+                width: '100%',
+                height: '276px',
+              }}
+              level={4} // 지도의 확대 레벨
+            >
+              <MapMarker
+                position={{
+                  // 마커가 표시될 위치입니다
+                  lat: 37.566,
+                  lng: 126.978,
+                }}
+                image={{
+                  src: markerImageSrc[0],
+                  size: imageSize,
+                  options: {
+                    spriteSize: spriteSize,
+                  },
+                }}
+              />
+            </Map>
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center px-6">
-        <button
-          className="px-10 py-3 w-6/12 bg-white text-purple-900 border border-purple-900 text-xs font-thin rounded mr-2"
-          onClick={() => {
-            navigate('/delivery-complete/123');
-          }}
-        >
-          대응 배송
-        </button>
-        <button
-          className="px-10 py-3 w-6/12 bg-purple-900 border border-gray-400 text-white text-xs font-thin rounded"
-          onClick={() => {
-            navigate('/delivery-complete/123');
-          }}
-        >
-          배송 완료
-        </button>
+      <div className="flex justify-center items-center px-6 my--500">
+        <ButtonContainer>
+          <Button
+            variant="white"
+            onClick={() => {
+              navigate('/delivery-complete/123');
+            }}
+          >
+            미배송 수거 취소
+          </Button>
+          <Button
+            variant="purple"
+            onClick={() => {
+              navigate('/delivery-complete/123');
+            }}
+          >
+            미배송 수거 완료
+          </Button>
+        </ButtonContainer>
       </div>
     </div>
   );
 }
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+  margin: 0 auto;
+  margin-top: 100px;
+`;
 
 export default UndeliveryDetailPage;
