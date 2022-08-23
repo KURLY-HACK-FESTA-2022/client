@@ -47,13 +47,13 @@ function ProductDetail({
       </div>
       <div className="flex justify-center items-center">
         <button
-          className="px-10 py-3 bg-white text-purple-900 border border-purple-900 text-sm font-thin rounded mr-2"
+          className="px-10 py-3 bg-white text-purple-900 border border-purple-900 text-xs font-thin rounded mr-2"
           onClick={openProductInquiryModal}
         >
           선택 상품 문의
         </button>
         <button
-          className="px-10 py-3 bg-purple-900 border border-gray-400 text-white text-sm font-thin rounded"
+          className="px-10 py-3 bg-purple-900 border border-gray-400 text-white text-xs font-thin rounded"
           onClick={openUndeliveryRequestModal}
         >
           미배송 수거 요청

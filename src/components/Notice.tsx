@@ -7,9 +7,10 @@ interface ICustomerNoticeProps {
   time: string;
   message: string;
   index: number;
+  name: string | null;
 }
 
-function Notice({ status, time, message, index }: ICustomerNoticeProps) {
+function Notice({ status, time, message, index, name }: ICustomerNoticeProps) {
   const statusArray = [
     '상품 문의 결과',
     '미배송 판정 실패',
@@ -19,7 +20,7 @@ function Notice({ status, time, message, index }: ICustomerNoticeProps) {
     '미배송 수거 잔행',
   ];
   return (
-    <div className="w-full py-4 hover:bg-purple-100 px-6 border border-t-1 border-gray-100">
+    <div className="w-full py-4 hover:bg-purple-100 px-6 border-solid border-t-2 border-gray-100">
       <div className="flex py-1 relative">
         {index % 2 == 1 ? (
           <>
@@ -46,6 +47,9 @@ function Notice({ status, time, message, index }: ICustomerNoticeProps) {
       </div>
       <div className="pt-3">
         <p className="text-sm">{message}</p>
+      </div>
+      <div>
+        <p className="text-sm text-gray-400">{name}</p>
       </div>
     </div>
   );
