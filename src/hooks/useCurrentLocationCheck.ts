@@ -1,54 +1,58 @@
 import { getDistance } from 'libs/utils/kakaoMapCalc';
-import React, { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 interface Location {
-  latitude: number;
-  longitude: number;
+  lat: number;
+  lng: number;
 }
 
 export default function useCurrentLocationCheck() {
-  const [beforeLocation, setBeforeLocation] = useState<Location>();
-  const [isUpdateFlag, setIsUpdateFlag] = useState(true);
+  let beforeLocation = {
+    lat: 0,
+    lng: 0,
+  };
+  let isUpdateFlag = true;
 
-  const onCurrentLocationCheck = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
+  const onCurrentLocationCheck = useCallback(() => {
     if (navigator.geolocation) {
       const newId = navigator.geolocation.watchPosition(
         (position) => {
-          setIsUpdateFlag(true);
+          // setIsUpdateFlag(true);
+          isUpdateFlag = true;
           const newLocation = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
           };
-          console.log('newLocation', newLocation);
 
           //시작
           if (beforeLocation !== undefined) {
             const dist = getDistance({
-              beforeLatitude: beforeLocation.latitude,
-              beforLongitude: beforeLocation.longitude,
-              newLatitude: newLocation.latitude,
-              newLongitude: newLocation.longitude,
+              beforeLatitude: beforeLocation.lat,
+              beforLongitude: beforeLocation.lng,
+              newLatitude: newLocation.lat,
+              newLongitude: newLocation.lng,
             });
-            // //이동거리가 50m미만이면 안바뀜
-            if (dist < 0.05) {
-              setIsUpdateFlag(false);
+            // 이동거리가 35m미만이면 안바뀜
+            if (dist < 0.035) {
+              // setIsUpdateFlag(false);
+              isUpdateFlag = false;
             }
           }
 
           if (isUpdateFlag) {
-            setBeforeLocation(newLocation);
+            // setBeforeLocation(newLocation);
+            beforeLocation = newLocation;
           }
         },
         (err) => {
           console.log(err.message);
         },
-        { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 },
+        { enableHighAccuracy: false, maximumAge: 10000, timeout: 5000 },
       );
     }
-  };
+  }, []);
   return {
+    beforeLocation,
     onCurrentLocationCheck,
   };
 }
