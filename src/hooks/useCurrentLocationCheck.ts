@@ -1,5 +1,5 @@
 import { getDistance } from 'libs/utils/kakaoMapCalc';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 interface Location {
   lat: number;
@@ -7,18 +7,14 @@ interface Location {
 }
 
 export default function useCurrentLocationCheck() {
-  let beforeLocation = {
-    lat: 0,
-    lng: 0,
-  };
-  let isUpdateFlag = true;
+  const [beforeLocation, setBeforeLocation] = useState<Location>();
+  const [isUpdateFlag, setIsUpdateFlag] = useState(true);
 
-  const onCurrentLocationCheck = useCallback(() => {
+  const onCurrentLocationCheck = () => {
     if (navigator.geolocation) {
       const newId = navigator.geolocation.watchPosition(
         (position) => {
-          // setIsUpdateFlag(true);
-          isUpdateFlag = true;
+          setIsUpdateFlag(true);
           const newLocation = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
@@ -34,14 +30,12 @@ export default function useCurrentLocationCheck() {
             });
             // 이동거리가 35m미만이면 안바뀜
             if (dist < 0.035) {
-              // setIsUpdateFlag(false);
-              isUpdateFlag = false;
+              setIsUpdateFlag(false);
             }
           }
 
           if (isUpdateFlag) {
-            // setBeforeLocation(newLocation);
-            beforeLocation = newLocation;
+            setBeforeLocation(newLocation);
           }
         },
         (err) => {
@@ -50,7 +44,7 @@ export default function useCurrentLocationCheck() {
         { enableHighAccuracy: false, maximumAge: 10000, timeout: 5000 },
       );
     }
-  }, []);
+  };
   return {
     beforeLocation,
     onCurrentLocationCheck,
