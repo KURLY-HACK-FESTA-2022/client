@@ -14,7 +14,7 @@ function DeliveryDetailContainer() {
       {/* <Button variant="purple" onClick={}>
         배송 완료
       </Button> */}
-      <WarningModal onToggleModal={onToggleWarningModal} />
+      {/* <WarningModal onToggleModal={onToggleWarningModal} /> */}
     </>
   );
 }

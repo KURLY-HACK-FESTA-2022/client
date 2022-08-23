@@ -33,6 +33,7 @@ function CustomerNoticePage() {
             status={value.status}
             time={value.time}
             message={value.message}
+            name={null}
           ></Notice>
         );
       })}
