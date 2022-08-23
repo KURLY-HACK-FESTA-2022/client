@@ -5,7 +5,7 @@ import useToggle from 'hooks/useToggle';
 import DeliveryDetailInfomation from 'components/delivery/deliveryDetail/DeliveryDetailInfomation';
 import styled from 'styled-components';
 import useCurrentLocationCheck from 'hooks/useCurrentLocationCheck';
-import { getDistance } from 'libs/utils/kakaoMapCalc';
+import { getDistance } from 'libs/utils/location';
 
 function DeliveryDetailContainer() {
   const [isWarningModal, onToggleWarningModal] = useToggle();
