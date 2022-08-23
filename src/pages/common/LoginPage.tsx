@@ -5,7 +5,6 @@ import { Button } from '../../components/button';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
-import { useQuery, useMutation } from 'react-query';
 import { KurlyLogo } from 'assets/images';
 import { BellIcon } from 'assets/icons';
 

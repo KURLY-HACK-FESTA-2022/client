@@ -1,4 +1,4 @@
-import { getDistance } from 'libs/utils/kakaoMapCalc';
+import { getDistance } from 'libs/utils/location';
 import { useState } from 'react';
 
 interface Location {
