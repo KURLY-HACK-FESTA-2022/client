@@ -4,11 +4,14 @@ import { isLogin } from 'libs/utils/auth';
 import React from 'react';
 import { DeliveryRouting } from 'routes/Routing';
 import styled, { ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
-    <>
-      {/* <GlobalStyles /> */}
+    /* <GlobalStyles /> */
+    <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <PageLayout>
           <PageWrapper>
@@ -16,7 +19,7 @@ function App() {
           </PageWrapper>
         </PageLayout>
       </ThemeProvider>
-    </>
+    </QueryClientProvider>
   );
 
   // 로그인 구현시 아래 코드 사용
