@@ -13,8 +13,15 @@ import {
   WhiteRectangle,
   YellowRectangle,
 } from 'assets/icons';
+import { Delivery } from 'model/delivery';
+// import { getCoordinate } from 'libs/utils/location';
 
-function KakaoMap() {
+interface DeliveryList {
+  deliveryList: Delivery[];
+  setSelectedOrder: (id: number) => void;
+}
+
+function KakaoMap({ deliveryList, setSelectedOrder }: DeliveryList) {
   const markerImageSrc = [
     RedBalloonChoiceImage,
     GrayBalloonImage,
@@ -23,19 +30,6 @@ function KakaoMap() {
   ];
   const imageSize = { width: 18, height: 22 };
   const spriteSize = { width: 18, height: 22 };
-
-  const orderInfomations = [
-    {
-      state: '배송완료',
-      lat: 37.566,
-      lng: 126.978,
-    },
-    {
-      state: '배송예정',
-      lat: 37.6,
-      lng: 126.5,
-    },
-  ];
 
   const deliveryState = [
     {
@@ -55,37 +49,41 @@ function KakaoMap() {
       icon: <RedRectangle />,
     },
   ];
+  // const [positionList, setPositionList] = useState([]);
+  // deliveryList.map((delivery) => {
+  //   const { address } = delivery;
+  //   getCoordinate({ address, setPositionList });
+  // });
 
   return (
-    <Map // 지도를 표시할 Container
-      center={{
-        // 지도의 중심좌표
-        lat: 37.566,
-        lng: 126.978,
-      }}
-      style={{
-        // 지도의 크기
-        width: '100%',
-        height: '404px',
-      }}
-      level={4} // 지도의 확대 레벨
-    >
-      <DeliveryStateBar>
-        {deliveryState.map(({ text, icon }) => (
-          <DeliveryStateList key={`Delivery state ${text}`}>
-            {icon}
-            <DeliveryStateText>{text}</DeliveryStateText>
-          </DeliveryStateList>
-        ))}
-      </DeliveryStateBar>
-      {orderInfomations.map((orderInfomation, index) => {
-        const { state, lat, lng } = orderInfomation;
-        return (
+    <KakaoMapWrapper>
+      <Map // 지도를 표시할 Container
+        center={{
+          // 지도의 중심좌표
+          lat: 37.565,
+          lng: 126.975,
+        }}
+        style={{
+          // 지도의 크기
+          width: '100%',
+          height: '404px',
+        }}
+        level={5} // 지도의 확대 레벨
+      >
+        <DeliveryStateBar>
+          {deliveryState.map(({ text, icon }) => (
+            <DeliveryStateList key={`Delivery state ${text}`}>
+              {icon}
+              <DeliveryStateText>{text}</DeliveryStateText>
+            </DeliveryStateList>
+          ))}
+        </DeliveryStateBar>
+        {deliveryList.map((delivery, index) => (
           <MapMarker
             position={{
               // 마커가 표시될 위치입니다
-              lat,
-              lng,
+              lat: delivery.lat,
+              lng: delivery.lng,
             }}
             key={index}
             image={{
@@ -95,10 +93,36 @@ function KakaoMap() {
                 spriteSize: spriteSize,
               },
             }}
+            onClick={() => setSelectedOrder(delivery.id)}
           />
-        );
-      })}
-    </Map>
+        ))}
+        {/* {deliveryList?.map((delivery, index) => {
+          const { address } = delivery;
+          const getResult = async () => {
+            console.log(result);
+            const result = await getCoordinate(address);
+          };
+          return (
+            <MapMarker
+              position={{
+                // 마커가 표시될 위치입니다
+                lat: 37.566,
+                lng: 126.978,
+              }}
+              key={index}
+              image={{
+                src: markerImageSrc[0],
+                size: imageSize,
+                options: {
+                  spriteSize: spriteSize,
+                },
+              }}
+              // onClick={() => console.log('marker', lat, lng)}
+            />
+          );
+        })} */}
+      </Map>
+    </KakaoMapWrapper>
   );
 }
 
@@ -126,6 +150,11 @@ const DeliveryStateList = styled.li`
 
 const DeliveryStateText = styled.span`
   margin-left: 8px;
+`;
+
+const KakaoMapWrapper = styled.div`
+  width: 360px;
+  height: 404px;
 `;
 
 export default KakaoMap;
