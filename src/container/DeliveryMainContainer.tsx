@@ -7,7 +7,15 @@ function DeliveryMainContainer() {
     <>
       <KakaoMap />
       <DeliveryInfomation />
-      <Button variant="longWhite">전체보기</Button>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Button variant="longWhite">전체보기</Button>
+      </div>
     </>
   );
 }
