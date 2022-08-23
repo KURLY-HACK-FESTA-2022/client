@@ -1,11 +1,13 @@
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Input from 'components/common/Input';
 import React, { EventHandler, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 
 function DeliveryCompletePage() {
   const navigate = useNavigate();
+  const [image, setImage] = useState('');
   return (
     <div className="">
       <Helmet>
@@ -23,12 +25,22 @@ function DeliveryCompletePage() {
         <p className="text-2xl pb-1 font-bold">배송 완료</p>
       </div>
       <div className="flex justify-center items-center h-96 px-6 ">
-        <img
-          className="max-w-full h-full"
-          src={
-            'https://thejobyouhate76.s3.amazonaws.com/kurly_front_of_door.jpeg'
-          }
-        ></img>
+        <img className="max-w-full h-full" src={image}></img>
+      </div>
+
+      <div className="flex h-20 justify-center items-center ">
+        <label className="px-10 py-3 w-6/12 justify-center bg-purple-900 border border-gray-400 text-white text-xs font-thin rounded">
+          사진 추가
+          <input
+            type="file"
+            style={{ display: 'none' }}
+            // capture="camera"
+            onChange={(e: any) => {
+              console.log(e.target.files[0]);
+              setImage(URL.createObjectURL(e.target.files[0]));
+            }}
+          />
+        </label>
       </div>
       <div className="px-6 py-6">
         <div className="">
