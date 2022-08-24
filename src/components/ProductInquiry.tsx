@@ -1,6 +1,6 @@
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 
 interface IProductInquiry {
@@ -8,7 +8,6 @@ interface IProductInquiry {
   afterOpenModal: () => void;
   closeModal: () => void;
   customStyles: any;
-  userStorage: any;
 }
 
 function ProductInquiry({
@@ -16,15 +15,7 @@ function ProductInquiry({
   afterOpenModal,
   closeModal,
   customStyles,
-  userStorage,
 }: IProductInquiry) {
-  const [kind, seKind] = useState(0);
-  const [description, setDescription] = useState('');
-  const [imageUrl, setImageUrl] = useState(
-    'https://thejobyouhate76.s3.amazonaws.com/1660921214250logo192.png',
-  );
-  const [check, setCheck] = useState(false);
-
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -43,12 +34,7 @@ function ProductInquiry({
       </div>
       <p className="pl-2 text-sm text-gray-500">문의 사유</p>
       <div className="px-2 mt-2 relative">
-        <select
-          className="w-full h-12 border border-2 text-sm p-3 rounded"
-          onChange={(e) => {
-            seKind(parseInt(e.target.value));
-          }}
-        >
+        <select className="w-full h-12 border border-2 text-sm p-3 rounded">
           <option value={0}>제품 손상</option>
           <option value={1}>단순 변심</option>
           <option value={2}>환불</option>
@@ -60,9 +46,6 @@ function ProductInquiry({
         <textarea
           className="border border-2 w-full h-36 text-sm p-3"
           placeholder={'문의 사유 관련하여 상세 설명을 기입해주세요.'}
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
         ></textarea>
       </div>
       <div className="px-2 mt-2 flex justify-center items-center text-center">
@@ -82,9 +65,6 @@ function ProductInquiry({
         <input
           type={'checkbox'}
           className=" scale-125 accent-purple-900 mr-2"
-          onChange={(e) => {
-            setCheck(!check);
-          }}
         ></input>
         <p className="pl-2 text-xs text-gray-500">
           사유 확인 후, 선택 조치에 따라 처리합니다.
@@ -97,15 +77,7 @@ function ProductInquiry({
         >
           취소
         </button>
-        <button
-          className="w-6/12 py-2 bg-purple-900 border border-gray-400 text-white text-sm font-thin rounded"
-          onClick={(e) => {
-            localStorage.setItem('productInquiryKind', kind.toString());
-            localStorage.setItem('productInquiryDescription', description);
-            localStorage.setItem('productInquiryImageUrl', imageUrl);
-            closeModal();
-          }}
-        >
+        <button className="w-6/12 py-2 bg-purple-900 border border-gray-400 text-white text-sm font-thin rounded">
           문의하기
         </button>
       </div>

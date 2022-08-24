@@ -1,19 +1,18 @@
 import { faUser, faBell } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Product from 'components/Product';
-import { getMyOrderInfo, getMyOrderInfSix, getMyOrderInf12 } from 'model/order';
+import { getMyOrderInfo } from 'model/order';
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 
 function CustomerMainPage() {
   const navigate = useNavigate();
-  const [myOrderInfo, setMyOrderInfo] = useState(getMyOrderInfo);
+  const MyOrderInfo = getMyOrderInfo;
   const [threeMonth, setThreeMonth] = useState(true);
   const [sixMonth, setSixMonth] = useState(false);
   const [oneYear, setOneYear] = useState(false);
   const [threeYear, setThreeYear] = useState(false);
-  const [searchData, setSearchData] = useState([]);
 
   return (
     <div className="flex items-center flex-col bg-gray-100">
@@ -68,7 +67,6 @@ function CustomerMainPage() {
               setSixMonth(false);
               setOneYear(false);
               setThreeYear(false);
-              setMyOrderInfo(getMyOrderInfo);
             }}
           >
             3개월
@@ -84,7 +82,6 @@ function CustomerMainPage() {
               setSixMonth(true);
               setOneYear(false);
               setThreeYear(false);
-              setMyOrderInfo(getMyOrderInfSix);
             }}
           >
             6개월
@@ -100,7 +97,6 @@ function CustomerMainPage() {
               setSixMonth(false);
               setOneYear(true);
               setThreeYear(false);
-              setMyOrderInfo(getMyOrderInf12);
             }}
           >
             1년
@@ -116,13 +112,12 @@ function CustomerMainPage() {
               setSixMonth(false);
               setOneYear(false);
               setThreeYear(true);
-              setMyOrderInfo(getMyOrderInf12);
             }}
           >
             3년
           </button>
         </div>
-        {myOrderInfo.orderList.map((value1, iter1) => {
+        {getMyOrderInfo.orderList.map((value1, iter1) => {
           return (
             <div key={iter1} className="px-3">
               <div className="w-full h-16 relative">

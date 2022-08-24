@@ -6,14 +6,12 @@ interface IProductProps {
   orderNumber: string;
   openUndeliveryRequestModal: () => void;
   openProductInquiryModal: () => void;
-  openUndeliveryMesssageModal: () => void;
 }
 
 function ProductDetail({
   orderNumber,
   openUndeliveryRequestModal,
   openProductInquiryModal,
-  openUndeliveryMesssageModal,
 }: IProductProps) {
   const myOrderProduct1 = orderProduct1;
   const statusArray = [
@@ -23,15 +21,6 @@ function ProductDetail({
     '배송완료',
     '미배송 수거',
   ];
-  function getUndeliveryItem() {
-    const isExist = localStorage.getItem('undeliveryIsExist');
-    if (isExist === 'true') {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   return (
     <div className="px-3">
       <div className="w-full h-16 relative">
@@ -63,22 +52,12 @@ function ProductDetail({
         >
           선택 상품 문의
         </button>
-
-        {getUndeliveryItem() ? (
-          <button
-            className="px-10 py-3 bg-purple-900 border border-gray-400 text-white text-xs font-thin rounded"
-            onClick={openUndeliveryMesssageModal}
-          >
-            미배송 수거 조치
-          </button>
-        ) : (
-          <button
-            className="px-10 py-3 bg-purple-900 border border-gray-400 text-white text-xs font-thin rounded"
-            onClick={openUndeliveryRequestModal}
-          >
-            미배송 수거 요청
-          </button>
-        )}
+        <button
+          className="px-10 py-3 bg-purple-900 border border-gray-400 text-white text-xs font-thin rounded"
+          onClick={openUndeliveryRequestModal}
+        >
+          미배송 수거 요청
+        </button>
       </div>
       <div className="flex justify-center items-center pt-2 pb-5">
         <p className="text-xs text-gray-400">
