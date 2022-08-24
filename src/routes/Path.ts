@@ -1,5 +1,5 @@
 const Path = {
-  LOGIN: '/login',
+  LOGIN: '/',
   CREATE_ACCOUNT: '/create-account',
   DELIVERY_MAIN: '/delivery/:id',
   DELIVERY_DETAIL: '/delivery-detail/:id',
@@ -11,7 +11,6 @@ const Path = {
   CUSTOMER_MAIN: '/customer/:id',
   CUSTOMER_NOTICE: '/customer-notice/:id',
   CUSTOMER_ORDER_DETAIL: '/customer-order-detail/:id',
-  TEST: '/test',
   NOTFOUND: '/*',
 } as const;
 

@@ -1,39 +1,12 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { FormError } from '../../components/form-error';
-import { Button } from '../../components/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import axios from 'axios';
 import { KurlyLogo } from 'assets/images';
-import { BellIcon } from 'assets/icons';
-
-interface ILoginForm {
-  email: string;
-  password: string;
-}
+import Button from 'components/common/Button';
+import Path from 'routes/Path';
 
 function LoginPage() {
-  const { register, getValues, formState, handleSubmit } = useForm<ILoginForm>({
-    mode: 'onChange',
-  });
-
-  const loginWithAxios = async () => {
-    const { data } = await axios.post('http://localhost:4000/login');
-    return data;
-  };
-
-  const onCompleted = () => {
-    return null;
-  };
-
-  const onSubmit = () => {
-    const { email, password } = getValues();
-    //const {data,isLoading} = useQuery('login', loginWithAxios);
-
-    // data에는 유저 토큰
-    // is Loading
-  };
+  const navigate = useNavigate();
   return (
     <div className="h-screen flex items-center flex-col mt-10 lg:mt-28">
       <Helmet>
@@ -44,51 +17,18 @@ function LoginPage() {
         <h4 className=" w-full font-medium text-left text-3xl">
           Welcome Kurly's Chaser
         </h4>
-        <form
-          className="grid gap-3 mt-5 w-full mb-5"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <input
-            {...register('email', {
-              required: 'Email is required',
-              pattern:
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            })}
-            type="email"
-            placeholder="Email"
-            required={true}
-            className="input transition-colors"
-          ></input>
-          {formState.errors.email?.type === 'pattern' && (
-            <FormError errorMessage={'Please enter a valid email'}></FormError>
-          )}
-          {formState.errors.email?.message && (
-            <FormError
-              errorMessage={formState.errors.email?.message}
-            ></FormError>
-          )}
-          <input
-            {...register('password', { required: 'Password is required' })}
-            type="password"
-            required={true}
-            placeholder="Password"
-            className="input"
-          ></input>
-          {formState.errors.password?.message && (
-            <FormError
-              errorMessage={formState.errors.password?.message}
-            ></FormError>
-          )}
-          <Button
-            canClick={formState.isValid}
-            actionText={'Log In'}
-            loading={false}
-          ></Button>
+        <form className="flex justify-center  gap-3 mt-5 w-full mb-5">
+          <Button variant="white" onClick={() => navigate(Path.DELIVERY_MAIN)}>
+            배달기사
+          </Button>
+          <Button variant="purple" onClick={() => navigate(Path.CUSTOMER_MAIN)}>
+            고객
+          </Button>
         </form>
         <div>
           <span>New to Kurly Chaser? </span>
           <Link
-            to={'/create-account'}
+            to={Path.CREATE_ACCOUNT}
             className="text-green-600 hover:underline"
           >
             Create an Account

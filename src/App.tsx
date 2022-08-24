@@ -1,8 +1,6 @@
-import GlobalStyles from 'libs/styles/globalStyles';
 import theme from 'libs/styles/theme';
-import { isLogin } from 'libs/utils/auth';
 import React from 'react';
-import { DeliveryRouting } from 'routes/Routing';
+import { CustomerRouting, DeliveryRouting } from 'routes/Routing';
 import styled, { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -10,20 +8,17 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    /* <GlobalStyles /> */
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <PageLayout>
           <PageWrapper>
+            <CustomerRouting />
             <DeliveryRouting />
           </PageWrapper>
         </PageLayout>
       </ThemeProvider>
     </QueryClientProvider>
   );
-
-  // 로그인 구현시 아래 코드 사용
-  // return <>{isLogin ? <PrivateRouting /> : <PublicRouting />}</>;
 }
 
 const PageLayout = styled.div`
@@ -54,8 +49,6 @@ const PageWrapper = styled.main`
   right: 0;
   bottom: 0;
   z-index: 9999;
-  /* overflow: hidden; */
-  /* position: absolute; */
 `;
 
 export default App;

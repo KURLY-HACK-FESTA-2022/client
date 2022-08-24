@@ -42,13 +42,22 @@ const CustomerRoutingComponents = [
   { path: '*', element: <NotFoundPage /> },
   { path: Path.LOGIN, element: <LoginPage /> },
   { path: Path.CREATE_ACCOUNT, element: <CreateAccount /> },
+  { path: Path.CUSTOMER_MAIN, element: <CustomerMainPage /> },
+  {
+    path: Path.CUSTOMER_NOTICE,
+    element: <CustomerNoticePage />,
+  },
+  {
+    path: Path.CUSTOMER_ORDER_DETAIL,
+    element: <CustomerOrderDetailPage />,
+  },
 ];
 
 const DeliveryRoutingComponents = [
   // logged in
   { path: '*', element: <NotFoundPage /> },
   { path: Path.LOGIN, element: <LoginPage /> },
-
+  { path: Path.CREATE_ACCOUNT, element: <CreateAccount /> },
   { path: Path.DELIVERY_MAIN, element: <DeliveryMainPage /> },
   {
     path: Path.DELIVERY_DETAIL,
@@ -70,15 +79,6 @@ const DeliveryRoutingComponents = [
   {
     path: Path.DELIVERY_COMPLETE,
     element: <DeliveryCompletePage />,
-  },
-  { path: Path.CUSTOMER_MAIN, element: <CustomerMainPage /> },
-  {
-    path: Path.CUSTOMER_NOTICE,
-    element: <CustomerNoticePage />,
-  },
-  {
-    path: Path.CUSTOMER_ORDER_DETAIL,
-    element: <CustomerOrderDetailPage />,
   },
 ];
 
