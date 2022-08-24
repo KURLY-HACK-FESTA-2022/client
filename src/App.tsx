@@ -1,6 +1,6 @@
 import theme from 'libs/styles/theme';
 import React from 'react';
-import { CustomerRouting, DeliveryRouting } from 'routes/Routing';
+import { CustomerRouting } from 'routes/Routing';
 import styled, { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -13,7 +13,6 @@ function App() {
         <PageLayout>
           <PageWrapper>
             <CustomerRouting />
-            <DeliveryRouting />
           </PageWrapper>
         </PageLayout>
       </ThemeProvider>

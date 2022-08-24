@@ -38,7 +38,7 @@ const DeliveryMainPage = React.lazy(
   () => import('pages/delivery/DeliveryMainPage'),
 );
 
-const CustomerRoutingComponents = [
+const RoutingComponents = [
   { path: '*', element: <NotFoundPage /> },
   { path: Path.LOGIN, element: <LoginPage /> },
   { path: Path.CREATE_ACCOUNT, element: <CreateAccount /> },
@@ -50,6 +50,28 @@ const CustomerRoutingComponents = [
   {
     path: Path.CUSTOMER_ORDER_DETAIL,
     element: <CustomerOrderDetailPage />,
+  },
+  { path: Path.DELIVERY_MAIN, element: <DeliveryMainPage /> },
+  {
+    path: Path.DELIVERY_DETAIL,
+    element: <DeliveryDetailPage />,
+  },
+  {
+    path: Path.UNDELIVERY_DETAIL,
+    element: <UndeliveryDetailPage />,
+  },
+  { path: Path.DELIVERY_MENU, element: <DeliveryMenuPage /> },
+  {
+    path: Path.DELIVERY_NOTICE,
+    element: <DeliveryNoticePage />,
+  },
+  {
+    path: Path.DELIVERY_COMPLETE_List,
+    element: <DeliveryCompleteListPage />,
+  },
+  {
+    path: Path.DELIVERY_COMPLETE,
+    element: <DeliveryCompletePage />,
   },
 ];
 
@@ -84,34 +106,39 @@ const DeliveryRoutingComponents = [
 
 export function CustomerRouting() {
   const publicRoutes = useMemo(() => {
-    return CustomerRoutingComponents.map((component, index) => {
+    return RoutingComponents.map((component, index) => {
       const { path, element } = component;
       return (
         <Route key={`${component}_${index}`} path={path} element={element} />
       );
     });
-  }, [CustomerRoutingComponents]);
+  }, [RoutingComponents]);
 
   return (
-    <Suspense fallback={<>....laoding</>}>
-      <Routes>{publicRoutes}</Routes>
+    <Suspense fallback={<>....loading</>}>
+      <Routes>{publicRoutes}</Routes>;
     </Suspense>
   );
 }
 
-export function DeliveryRouting() {
-  const privateRoutes = useMemo(() => {
-    return DeliveryRoutingComponents.map((component, index) => {
-      const { path, element } = component;
-      return (
-        <Route key={`${component}_${index}`} path={path} element={element} />
-      );
-    });
-  }, [DeliveryRoutingComponents]);
+// export function DeliveryRouting() {
+//   const privateRoutes = useMemo(() => {
+//     return DeliveryRoutingComponents.map((component, index) => {
+//       const { path, element } = component;
+//       return (
+//         <Route key={`${component}_${index}`} path={path} element={element} />
+//       );
+//     });
+//   }, [DeliveryRoutingComponents]);
 
-  return (
-    <Suspense fallback={<>....loging</>}>
-      <Routes>{privateRoutes}</Routes>
-    </Suspense>
-  );
-}
+//   return <Routes>{privateRoutes}</Routes>;
+// }
+
+// export function Routing() {
+//   return (
+//     <Suspense fallback={<>....loading</>}>
+//       <DeliveryRouting />
+//       <CustomerRouting />
+//     </Suspense>
+//   );
+// }
