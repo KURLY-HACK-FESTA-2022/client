@@ -1,9 +1,3 @@
-import {
-  GrayBalloonImage,
-  PurpleBalloonImage,
-  RedBalloonChoiceImage,
-  YellowBalloonImage,
-} from 'assets/images';
 import React, { useEffect, useState } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import styled from 'styled-components';
@@ -14,6 +8,7 @@ import {
   YellowRectangle,
 } from 'assets/icons';
 import { Delivery } from 'model/delivery';
+import deliveryStorage from 'libs/utils/deliveryStorage';
 // import { getCoordinate } from 'libs/utils/location';
 
 interface DeliveryList {
@@ -22,12 +17,6 @@ interface DeliveryList {
 }
 
 function KakaoMap({ deliveryList, setSelectedOrder }: DeliveryList) {
-  const markerImageSrc = [
-    RedBalloonChoiceImage,
-    GrayBalloonImage,
-    YellowBalloonImage,
-    PurpleBalloonImage,
-  ];
   const imageSize = { width: 18, height: 22 };
   const spriteSize = { width: 18, height: 22 };
 
@@ -87,13 +76,17 @@ function KakaoMap({ deliveryList, setSelectedOrder }: DeliveryList) {
             }}
             key={index}
             image={{
-              src: markerImageSrc[0],
+              src: delivery.marker,
               size: imageSize,
               options: {
                 spriteSize: spriteSize,
               },
             }}
-            onClick={() => setSelectedOrder(delivery.id)}
+            onClick={() => {
+              deliveryStorage.remove();
+              deliveryStorage.set(delivery);
+              setSelectedOrder(delivery.id);
+            }}
           />
         ))}
         {/* {deliveryList?.map((delivery, index) => {
