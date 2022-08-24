@@ -24,40 +24,41 @@ export const getDistance = ({
     dist = dist * 60 * 1.1515;
     dist = dist * 1.609344;
     //KM로 변환
-    console.log(
-      'getDistance',
-      beforeLatitude,
-      beforLongitude,
-      newLatitude,
-      newLongitude,
-      dist,
-    );
+    // console.log(
+    //   'getDistance',
+    //   beforeLatitude,
+    //   beforLongitude,
+    //   newLatitude,
+    //   newLongitude,
+    //   dist,
+    // );
     return dist;
   }
 };
 
 // export function useCoordinate(address: string) {
-//   const [coordinate, setCoordinate] = useState<any>();
+//   const [positionList, setPositionList] = useState([]);
+
 //   const getCoordinate = (address: string) => {
 //     const geocoder = new kakao.maps.services.Geocoder();
-//     geocoder.addressSearch(address, (result, status) => {
+//     const response = geocoder.addressSearch(address, (result, status) => {
 //       if (status === kakao.maps.services.Status.OK) {
 //         console.log(result);
-//         return { lat: result[0].x, lng: result[0].y };
+//         return { result };
 //       }
 //       return { lat: 0, lng: 0 };
 //     });
 //   };
 
-//   return coordinate;
+//   return response;
 // }
 
 // export const getCoordinate = ({ address, setPositionList }: any) => {
 //   const geocoder = new kakao.maps.services.Geocoder();
 //   geocoder.addressSearch(address, (result, status) => {
 //     if (status === kakao.maps.services.Status.OK) {
-//       console.log(result);
 //       setPositionList((prev: any) => [...prev, result]);
+//       console.log(result);
 //     }
 //   });
 // };
