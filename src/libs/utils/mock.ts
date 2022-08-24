@@ -32,4 +32,15 @@ export const deliveryList = [
     total: 2,
     branch: 'undelivery',
   },
+  {
+    id: 4,
+    address: ' 서울시 서울특별시 강남구  ',
+    lat: 37.567,
+    lng: 126.983,
+    comment: '.',
+    entrancePassword: '1234*',
+    orderNumber: 'WW123451235125',
+    total: 2,
+    branch: 'undelivery',
+  },
 ];
