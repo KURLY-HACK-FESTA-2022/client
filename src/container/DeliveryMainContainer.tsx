@@ -4,6 +4,7 @@ import DeliveryInfomation from 'components/delivery/main/DeliveryInfomation';
 import KakaoMap from 'components/delivery/main/KakaoMap';
 import { deliveryList } from 'libs/utils/mock';
 import { queryKeys } from 'libs/utils/queryKeys';
+import userStorage from 'libs/utils/userStorage';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ function DeliveryMainContainer() {
   // );
 
   // console.log(deliveryList);
+
   return (
     <>
       <KakaoMap

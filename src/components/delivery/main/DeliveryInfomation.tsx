@@ -22,7 +22,7 @@ function DeliveryInfomation({ selectedOrder }: Props) {
       {deliveryList.map(
         (delivery: Delivery) =>
           delivery.id === selectedOrder && (
-            <CategoryList>
+            <CategoryList key={delivery.id}>
               <Category>
                 상세주소
                 <CategoryContent>{delivery.address}</CategoryContent>

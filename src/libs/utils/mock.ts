@@ -1,3 +1,10 @@
+import {
+  GrayBalloonImage,
+  PurpleBalloonImage,
+  RedBalloonImage,
+  YellowBalloonImage,
+} from 'assets/images';
+
 export const deliveryList = [
   {
     id: 1,
@@ -9,6 +16,7 @@ export const deliveryList = [
     orderNumber: 'WW123451235125',
     total: 4,
     branch: 'difference',
+    marker: RedBalloonImage,
   },
   {
     id: 2,
@@ -20,6 +28,7 @@ export const deliveryList = [
     orderNumber: 'WW123451235125',
     total: 2,
     branch: 'complaint',
+    marker: PurpleBalloonImage,
   },
   {
     id: 3,
@@ -31,6 +40,7 @@ export const deliveryList = [
     orderNumber: 'WW123451235125',
     total: 2,
     branch: 'undelivery',
+    marker: YellowBalloonImage,
   },
   {
     id: 4,
@@ -42,5 +52,18 @@ export const deliveryList = [
     orderNumber: 'WW123451235125',
     total: 2,
     branch: 'undelivery',
+    marker: RedBalloonImage,
+  },
+  {
+    id: 5,
+    address: ' 서울시 서울특별시 강북구 ',
+    lat: 37.56467,
+    lng: 126.976667,
+    comment: '빨리와주세요.',
+    entrancePassword: '1234*',
+    orderNumber: 'WW123451235125',
+    total: 4,
+    branch: 'difference',
+    marker: GrayBalloonImage,
   },
 ];

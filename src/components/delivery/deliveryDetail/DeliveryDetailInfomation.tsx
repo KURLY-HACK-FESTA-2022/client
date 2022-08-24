@@ -1,6 +1,8 @@
+import deliveryStorage from 'libs/utils/deliveryStorage';
 import styled from 'styled-components';
 
 function DeliveryDetailInfomation() {
+  const delivery = deliveryStorage.get();
   return (
     <InfomationSection>
       <TitleContainer>
@@ -9,7 +11,7 @@ function DeliveryDetailInfomation() {
       <CategoryList>
         <Category>
           상세주소
-          <CategoryContent>서울시 강남구 역삼동</CategoryContent>
+          <CategoryContent>{delivery?.address}</CategoryContent>
         </Category>
         <Category>
           수령인 이름
@@ -17,15 +19,15 @@ function DeliveryDetailInfomation() {
         </Category>
         <Category>
           배송 메시지
-          <CategoryContent>안녕하세요. 저희 판매자입니다.</CategoryContent>
+          <CategoryContent>{delivery?.comment}</CategoryContent>
         </Category>
         <Category>
           공동 현관 비밀번호
-          <CategoryContent>123456</CategoryContent>
+          <CategoryContent>{delivery?.entrancePassword}</CategoryContent>
         </Category>
         <Category>
           운송장 내역
-          <CategoryContent>123456789</CategoryContent>
+          <CategoryContent>{delivery?.orderNumber}</CategoryContent>
         </Category>
         <Category>
           포장 방법
@@ -33,7 +35,7 @@ function DeliveryDetailInfomation() {
         </Category>
         <Category>
           제품 수량
-          <CategoryContent>1</CategoryContent>
+          <CategoryContent>{delivery?.total}</CategoryContent>
         </Category>
         <Category>
           유의사항

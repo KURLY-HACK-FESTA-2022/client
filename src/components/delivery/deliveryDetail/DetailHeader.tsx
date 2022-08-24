@@ -1,11 +1,14 @@
 import { XIcon } from 'assets/icons';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Path from 'routes/Path';
 import styled from 'styled-components';
 
 function DetailHeader() {
+  const navigate = useNavigate();
   return (
     <HeaderContainer>
-      <XIcon />
+      <XIcon onClick={() => navigate(Path.DELIVERY_MAIN)} />
       <HeaderText>상세 정보</HeaderText>
     </HeaderContainer>
   );

@@ -7,6 +7,7 @@ export interface Delivery {
   entrancePassword: string;
   orderNumber: string;
   total: number;
+  marker: string;
 }
 
 export type deliveryDetail = {
