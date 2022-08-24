@@ -1,4 +1,4 @@
-import { BellIcon } from 'assets/icons';
+import { BellIcon, MenuIcon } from 'assets/icons';
 import { KurlySmallLogo } from 'assets/images';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -9,10 +9,17 @@ function MainHeader() {
   return (
     <HeaderContainer>
       {/* id 필요 */}
-      <LogoStyled to={Path.DELIVERY_MAIN}>
-        <img src={KurlySmallLogo} alt="사이트 로고" />
-      </LogoStyled>
-      <BellIcon />
+      <Box>
+        <Link to={Path.DELIVERY_MENU}>
+          <MenuIcon />
+        </Link>
+        <LogoStyled to={Path.DELIVERY_MAIN}>
+          <img src={KurlySmallLogo} alt="사이트 로고" />
+        </LogoStyled>
+      </Box>
+      <Link to={Path.DELIVERY_NOTICE}>
+        <BellIcon />
+      </Link>
     </HeaderContainer>
   );
 }
@@ -24,6 +31,13 @@ const HeaderContainer = styled.header`
   width: 100%;
   height: 56px;
   padding: 0 24px;
+`;
+
+const Box = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 72px;
 `;
 
 const LogoStyled = styled(Link)`
