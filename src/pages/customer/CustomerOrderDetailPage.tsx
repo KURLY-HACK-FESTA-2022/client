@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import ProductInquiry from 'components/ProductInquiry';
 import UndeliveryRequest from 'components/UndeliveryRequest';
+import userStorage from 'libs/utils/userStorage';
+import UndeliveryMessage from 'components/UndeliveryMessage';
 
 const customStyles = {
   content: {
@@ -29,7 +31,9 @@ function CustomerOrderDetaulPage() {
   const navigate = useNavigate();
   let subtitle: string;
   const [undeliveryRequest, setUndeliveryRequest] = useState(false);
+  const [undeliveryMessage, setUndeliveryMessage] = useState(false);
   const [productInquiry, setProductInquiry] = useState(false);
+
   function openUndeliveryRequestModal() {
     setUndeliveryRequest(true);
   }
@@ -37,9 +41,17 @@ function CustomerOrderDetaulPage() {
     setProductInquiry(true);
   }
 
+  function openUndeliveryMessageModal() {
+    setUndeliveryMessage(true);
+  }
+
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     //subtitle.style.color = '#f00';
+  }
+  function closeMessageModal() {
+    setUndeliveryMessage(false);
+    setProductInquiry(false);
   }
 
   function closeModal() {
@@ -51,17 +63,25 @@ function CustomerOrderDetaulPage() {
       <Helmet>
         <title>컬리체이서 | 고객 주문 상세페이지</title>
       </Helmet>
+      <UndeliveryMessage
+        modalIsOpen={undeliveryMessage}
+        afterOpenModal={afterOpenModal}
+        closeModal={closeMessageModal}
+        customStyles={customStyles}
+      ></UndeliveryMessage>
       <UndeliveryRequest
         modalIsOpen={undeliveryRequest}
         afterOpenModal={afterOpenModal}
         closeModal={closeModal}
         customStyles={customStyles}
+        userStorage={userStorage}
       ></UndeliveryRequest>
       <ProductInquiry
         modalIsOpen={productInquiry}
         afterOpenModal={afterOpenModal}
         closeModal={closeModal}
         customStyles={customStyles}
+        userStorage={userStorage}
       ></ProductInquiry>
       <section className="bg-white">
         <div className="flex h-20 items-center px-6">
@@ -82,6 +102,7 @@ function CustomerOrderDetaulPage() {
           openUndeliveryRequestModal={openUndeliveryRequestModal}
           openProductInquiryModal={openProductInquiryModal}
           orderNumber={'12345678910'}
+          openUndeliveryMesssageModal={openUndeliveryMessageModal}
         ></ProductDetail>
       </section>
       <section className="bg-white mt-1.5 px-3">
@@ -102,6 +123,7 @@ function CustomerOrderDetaulPage() {
           <a
             style={{ textDecoration: 'underline' }}
             className="text-purple-900 absolute right-3"
+            href="/delivery-menu/123"
           >
             배송조회
           </a>

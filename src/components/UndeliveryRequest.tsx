@@ -1,6 +1,6 @@
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 
 interface IUndeliveryRequest {
@@ -8,6 +8,7 @@ interface IUndeliveryRequest {
   afterOpenModal: () => void;
   closeModal: () => void;
   customStyles: any;
+  userStorage: any;
 }
 
 function UndeliveryRequest({
@@ -15,7 +16,10 @@ function UndeliveryRequest({
   afterOpenModal,
   closeModal,
   customStyles,
+  userStorage,
 }: IUndeliveryRequest) {
+  const [message, setMessage] = useState('');
+  const [check, setCheck] = useState(false);
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -37,6 +41,9 @@ function UndeliveryRequest({
         <textarea
           className="border border-2 w-full h-36 text-sm p-3"
           placeholder={'배송기사분께 메세지를 작성해주세요.'}
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}
         ></textarea>
       </div>
       <p className="pl-2 text-red-500" style={{ fontSize: '11px' }}>
@@ -47,6 +54,9 @@ function UndeliveryRequest({
         <input
           type={'checkbox'}
           className=" scale-125 accent-purple-900 mr-2"
+          onChange={(e) => {
+            setCheck(!check);
+          }}
         ></input>
         <p className="pl-2 text-sm text-gray-500">
           미수령 하신게 확실하신건가요?
@@ -59,7 +69,14 @@ function UndeliveryRequest({
         >
           취소
         </button>
-        <button className="w-6/12 py-2 bg-purple-900 border border-gray-400 text-white text-sm font-thin rounded">
+        <button
+          className="w-6/12 py-2 bg-purple-900 border border-gray-400 text-white text-sm font-thin rounded"
+          onClick={(e) => {
+            localStorage.setItem('undeliveryMessage', message);
+            localStorage.setItem('undeliveryIsExist', 'true');
+            closeModal();
+          }}
+        >
           미배송 수거 요청
         </button>
       </div>
